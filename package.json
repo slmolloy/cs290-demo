@@ -1,0 +1,26 @@
+{
+  "name": "cs290-demo",
+  "version": "1.0.0",
+  "description": "Demo Node app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slmolloy/cs290-demo.git"
+  },
+  "keywords": [
+    "demo",
+    "node"
+  ],
+  "author": "Scott Molloy",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/slmolloy/cs290-demo/issues"
+  },
+  "homepage": "https://github.com/slmolloy/cs290-demo#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
