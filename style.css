@@ -1,0 +1,129 @@
+.dark-primary-color    { background: #F57C00; }
+.default-primary-color { background: #FF9800; }
+.light-primary-color   { background: #FFE0B2; }
+.text-primary-color    { color: #212121; }
+.accent-color          { background: #03A9F4; }
+.primary-text-color    { color: #212121; }
+.secondary-text-color  { color: #727272; }
+.divider-color         { border-color: #B6B6B6; }
+
+body {
+  font-family: sans-serif;
+  font-size: 1em;
+  color: #212121;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, thead, tbody, tr, th, td {
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+caption {
+  text-align: left;
+  padding-left: 60px;
+  font-style: italic;
+  font-size: .9em;
+  color: #727272;
+}
+
+thead th:first-of-type {
+  border-bottom: 0px;
+}
+
+th, td {
+  text-align: right;
+  padding: 6px 8px 6px 0px;
+}
+
+thead th {
+  border-bottom-color: #B6B6B6;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+tfoot td {
+  border-left-color: #B6B6B6;
+  border-left-style: solid;
+  border-left-width: 1px;
+  color: #727272;
+}
+
+tfoot td:first-of-type {
+  border-left: 0px;
+}
+
+tfoot td:last-of-type {
+  text-align: center;
+}
+
+tbody th {
+  border-right-color: #B6B6B6;
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+
+tbody tr:last-of-type td {
+  border-bottom-color: #B6B6B6;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+tbody tr:nth-of-type(odd) td {
+  background-color: #03A9F4;
+  color: #FFE0B2;
+}
+
+th {
+  color: #FF9800;
+  width: 60px;
+}
+
+tbody th {
+  font-style: italic;
+  font-weight: normal;
+}
+
+tbody tr td:first-of-type {
+  border-right-color: #B6B6B6;
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+
+tbody tr td:last-of-type {
+  border-right-color: #B6B6B6;
+  border-right-style: solid;
+  border-right-width: 1px;
+}
+
+ol {
+  margin-left: 60px;
+}
+
+ol li {
+  padding: 4px 0px 4px 0px;
+}
+
+.outer-content {
+  float: left;
+  text-align: center;
+  width: 75%;
+  background-color: pink;
+  margin-top: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+#inner-content {
+  text-align: center;
+  margin: 0 auto;
+  width: 75%;
+  background-color: blue;
+  color: white;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
