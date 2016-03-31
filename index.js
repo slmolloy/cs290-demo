@@ -3,6 +3,10 @@ var path = require('path');
 var app = express();
 app.set('port', (process.env.PORT || 3000));
 
+if (process.argv.length === 3 ) {
+  app.set('port', process.argv[2]);
+}
+
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'content.html'));
 });
@@ -12,5 +16,5 @@ app.get('/style.css', function(req, res) {
 });
 
 var server = app.listen(app.get('port'), function() {
-  console.log('Server listening on ', app.get('port'));
+  console.log('Server listening on', app.get('port'));
 });
