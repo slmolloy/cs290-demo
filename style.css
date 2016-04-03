@@ -159,19 +159,7 @@ fieldset {
   padding: 4px 0px 4px 0px;
 }
 
-input[type=text] {
-  border: 0px;
-  border-bottom: thin solid #03A9F4;
-  color: #212121;
-}
-
-input[type=password] {
-  border: 0px;
-  border-bottom: thin solid #03A9F4;
-  color: #212121;
-}
-
-input[type=number] {
+input[type=text], input[type=password], input[type=number] {
   border: 0px;
   border-bottom: thin solid #03A9F4;
   color: #212121;
