@@ -1,3 +1,7 @@
+/*
+ * Color selection from materialpalette.com
+ * https://www.materialpalette.com/orange/light-blue
+ */
 .dark-primary-color    { background: #F57C00; }
 .default-primary-color { background: #FF9800; }
 .light-primary-color   { background: #FFE0B2; }
@@ -6,6 +10,7 @@
 .primary-text-color    { color: #212121; }
 .secondary-text-color  { color: #727272; }
 .divider-color         { border-color: #B6B6B6; }
+
 
 body {
   font-family: sans-serif;
