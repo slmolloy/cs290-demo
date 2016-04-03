@@ -78,9 +78,85 @@
 </ol>
 
 <div class="outer-content">
-  <div id="inner-content">
+  <div class="inner-content">
     Hello boxes with different colors!
   </div>
 </div>
+
+<form
+    action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php"
+    method="post">
+  <fieldset>
+    <legend>POST Order:</legend>
+    <div class="form-group">
+      <label>Your Name:</label>
+      <input type="text" name="text_input" size="20" maxlength="128">
+    </div>
+    <div class="form-group">
+      <label>Quantity:</label>
+      <input type="number" name="numerical_input" size="30" maxlength="8">
+    </div>
+    <div class="form-group">
+      <label>Pin:</label>
+      <input type="password" name="password_input" size="20" maxlength="64">
+    </div>
+    <div class="radio-group">
+      <label>Your candy choice:</label>
+      <div>
+        <input type="radio" name="candy" id="snickers" value="snickers" />
+        <label for="snickers">Snickers</label>
+      </div>
+      <div>
+        <input type="radio" name="candy" id="skittles" value="skittles" />
+        <label for="skittles">Skittles</label>
+      </div>
+      <div>
+        <input type="radio" name="candy" id="mentos" value="mentos" />
+        <label for="mentos">Mentos</label>
+      </div>
+    </div>
+    <div class="button-group">
+      <input type="submit" value="Submit Order" />
+    </div>
+  </fieldset>
+</form>
+
+<form
+    action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php"
+    method="get">
+  <fieldset>
+    <legend>GET Order:</legend>
+    <div class="form-group">
+      <label>Your Name:</label>
+      <input type="text" name="text_input" size="20" maxlength="128">
+    </div>
+    <div class="form-group">
+      <label>Quantity:</label>
+      <input type="number" name="numerical_input" size="30" maxlength="8">
+    </div>
+    <div class="form-group">
+      <label>Pin:</label>
+      <input type="password" name="password_input" size="20" maxlength="64">
+    </div>
+    <div class="radio-group">
+      <label>Your candy choice:</label>
+      <div>
+        <input type="radio" name="candy" id="snickers" value="snickers" />
+        <label for="snickers">Snickers</label>
+      </div>
+      <div>
+        <input type="radio" name="candy" id="skittles" value="skittles" />
+        <label for="skittles">Skittles</label>
+      </div>
+      <div>
+        <input type="radio" name="candy" id="mentos" value="mentos" />
+        <label for="mentos">Mentos</label>
+      </div>
+    </div>
+    <div class="button-group">
+      <input type="submit" value="Submit Order" />
+    </div>
+  </fieldset>
+</form>
 </body>
 </html>

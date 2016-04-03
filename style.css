@@ -109,7 +109,6 @@ ol li {
 }
 
 .outer-content {
-  float: left;
   text-align: center;
   width: 75%;
   background-color: pink;
@@ -118,7 +117,7 @@ ol li {
   padding-bottom: 12px;
 }
 
-#inner-content {
+.inner-content {
   text-align: center;
   margin: 0 auto;
   width: 75%;
@@ -126,4 +125,58 @@ ol li {
   color: white;
   padding-top: 4px;
   padding-bottom: 4px;
+}
+
+fieldset {
+  border-color: #03A9F4;
+  margin-top: 20px;
+  color: #FF9800;
+}
+
+.form-group {
+  padding: 8px 0px 4px 0px;
+}
+
+.form-group>label {
+  width: 110px;
+  float: left;
+}
+
+.radio-group {
+  padding: 8px 0px 4px 0px;
+}
+
+.radio-group>label {
+  width: auto;
+}
+
+.radio-group>div {
+  padding: 4px 0px 4px 0px;
+}
+
+input[type=text] {
+  border: 0px;
+  border-bottom: thin solid #03A9F4;
+  color: #212121;
+}
+
+input[type=password] {
+  border: 0px;
+  border-bottom: thin solid #03A9F4;
+  color: #212121;
+}
+
+input[type=number] {
+  border: 0px;
+  border-bottom: thin solid #03A9F4;
+  color: #212121;
+}
+
+input[type=submit] {
+  margin: 12px 0px 8px 0px;
+  padding: 6px;
+}
+
+label {
+  color: #212121;
 }
