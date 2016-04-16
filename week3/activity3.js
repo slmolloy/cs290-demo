@@ -10,39 +10,70 @@ var testArray = [
   {here: {}},
 ];
 
+var pass = 0, fail = 0;
 testArray.forEach(function (valueA, i) {
   testArray.forEach(function (valueB, j) {
-    console.log("deepEqual(" + i + ", " + j + ") = " + deepEqual(testArray[i], testArray[j]));
+    var result = deepEqual(testArray[i], testArray[j]);
+    if (i === j) {
+      if (result) {
+        pass++;
+        console.log("(" + i + "," + j + ") = true");
+      } else {
+        fail++;
+        console.log("(" + i + "," + j + ") = false --- FAIL");
+      }
+    } else {
+      if (result) {
+        fail++;
+        console.log("(" + i + "," + j + ") = true  --- FAIL");
+      } else {
+        pass++;
+        console.log("(" + i + "," + j + ") = false");
+      }
+    }
   });
 });
+console.log("PASS: " + pass + " -- FAIL: " + fail);
+
+function realtype(obj) {
+  if (obj === null) return 'null';
+  if (obj === 'undefined') return 'undefined';
+
+}
 
 function deepEqual(objA, objB) {
+  if (objA === objB) return true;
+
   if (objA === null && objB === null) return true;
 
   if (objA === null || objB === null) return false;
 
-  if (typeof(objA) === 'object' && typeof(objB) === 'object') {
-    for (var keyA in objA + objB) {
-      if (keyA in objB) {
-        var result1 = deepEqual(objA[keyA], objB[keyA]);
-        if (!result1) {
-          return false;
-        }
+  if (objA === undefined && objB === undefined) return true;
+
+  if (objA === undefined || objB === undefined) return false;
+
+  if (typeof(objA) === 'object' && typeof(objB) === 'object') return objEqual(objA, objB);
+
+  if (typeof(objA) === 'object' || typeof(objB) === 'object') return false;
+
+  return (objA === objB);
+}
+
+function objEqual(objA, objB) {
+  for (var keyA in objA + objB) {
+    if (keyA in objB) {
+      var result1 = deepEqual(objA[keyA], objB[keyA]);
+      if (!result1) {
+        return false;
       }
     }
-    for (var keyB in objB) {
-      if (keyB in objA) {
-        var result2 = deepEqual(objB[keyB], objA[keyB]);
-        if (!result2) {
-          return false;
-        }
-      }
-    }
-  } else if (typeof(objA) === typeof(objB)) {
-    var result = (objA === objB);
-    return result;
-  } else {
-    return false;
   }
-  return true;
+  for (var keyB in objB) {
+    if (keyB in objA) {
+      var result2 = deepEqual(objB[keyB], objA[keyB]);
+      if (!result2) {
+        return false;
+      }
+    }
+  }
 }
