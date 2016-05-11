@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="CS290 Week 6">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <meta name="author" content="Scott Molloy">
+    <title>Week 6</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Weather</legend>
+            <label for="searchLocation"></label>
+            <input type="text" name="searchLocation" id="searchLocation">
+            <input type="submit" id="locationSubmit">
+        </fieldset>
+    </form>
+    <div>
+        <h2>Result</h2>
+        <ul>
+            <li><span>Location: </span><span id="weatherLocation"></span></li>
+            <li><span>Condition: </span><span id="weatherCondition"></span></li>
+            <li><span>Temp: </span><span id="weatherTemp"></span></li>
+            <li><span>Humidity: </span><span id="weatherHumidity"></span></li>
+
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
