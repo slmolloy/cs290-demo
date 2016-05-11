@@ -1,0 +1,15 @@
+{
+  "name": "week7",
+  "version": "1.0.0",
+  "description": "Week 7 activity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Scott Molloy",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
