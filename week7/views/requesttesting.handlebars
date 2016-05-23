@@ -1,0 +1,14 @@
+<h1>{{action}} Request Received</h1>
+<ul>
+    {{#each qParams}}
+    <li>{{this.name}}: {{this.value}}
+    {{/each}}
+</ul>
+
+{{#if bParams}}
+    <ul>
+        {{#each bParams}}
+            <li>{{this.name}}: {{this.value}}
+        {{/each}}
+    </ul>
+{{/if}}
