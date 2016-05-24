@@ -17,18 +17,58 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
-  res.render('requesttesting', {
-    action: 'GET',
-    qParams: getQueryParamsArray(req)
-  });
+  var context = {};
+
+  if (!req.session.name) {
+    res.render('newuser', context);
+    return;
+  }
+
+  context.name = req.session.name;
+  context.toDoCount = req.session.toDo.length || 0;
+  context.toDo = req.session.toDo || [];
+  console.log(context.toDo);
+
+  res.render('todo', context);
 });
 
 app.post('/', function(req, res) {
-  res.render('requesttesting', {
-    action: 'POST',
-    qParams: getQueryParamsArray(req),
-    bParams: getBodyParamsArray(req)
-  });
+  var context = {};
+
+  if (req.body['Logout']) {
+    req.session.destroy();
+    res.render('newuser', context);
+    return;
+  }
+
+  if (req.body['New List']) {
+    req.session.name = req.body.name;
+    req.session.toDo = [];
+    req.session.curId = 0;
+  }
+
+  if (!req.session.name) {
+    res.render('newuser', context);
+    return;
+  }
+
+  if (req.body['Add Item']) {
+    req.session.toDo.push({"name": req.body.name, "id": req.session.curId});
+    req.session.curId++;
+  }
+
+  if (req.body['Done']) {
+    req.session.toDo = req.session.toDo.filter(function(e) {
+      return e.id != req.body.id;
+    })
+  }
+
+  context.name = req.session.name;
+  context.toDoCount = req.session.toDo.length;
+  context.toDo = req.session.toDo;
+  console.log(context.toDo);
+
+  res.render('todo', context);
 });
 
 app.get('/count', function(req, res) {
