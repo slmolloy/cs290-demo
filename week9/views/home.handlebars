@@ -1,0 +1,6 @@
+<h1>Welcome home!</h1>
+<ul>
+    {{#each results}}
+        <li>{{@index}}: {{this.name}} - {{this.done}} - {{this.due}}</li>
+    {{/each}}
+</ul>

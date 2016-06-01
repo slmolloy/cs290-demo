@@ -1,12 +1,11 @@
-// Copied from week 7, need to modify for week 8 assignment
-
-
 var express = require('express');
 var app = express();
 
 var session = require('express-session');
 var handlebars = require('express-handlebars').create({defaultLayout: 'main'});
 var bodyParser = require('body-parser');
+
+var db = require('./db');
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -19,63 +18,46 @@ app.use(bodyParser.json());
 app.get('/', function(req, res) {
   var context = {};
 
-  if (!req.session.name) {
-    res.render('newuser', context);
-    return;
-  }
-
-  context.name = req.session.name;
-  context.toDoCount = req.session.toDo.length || 0;
-  context.toDo = req.session.toDo || [];
-  console.log(context.toDo);
-
-  res.render('todo', context);
+  db.pool.query('SELECT * FROM todo', function(err, rows, fields) {
+    if (err) {
+      next(err);
+      return;
+    }
+    context.results = rows;
+    console.log("Rows: " + rows);
+    console.log("Fields: " + fields);
+    res.render('home', context);
+  });
 });
 
-app.post('/', function(req, res) {
+app.get('/insert', function(req, res, next) {
   var context = {};
-
-  if (req.body['Logout']) {
-    req.session.destroy();
-    res.render('newuser', context);
-    return;
-  }
-
-  if (req.body['New List']) {
-    req.session.name = req.body.name;
-    req.session.toDo = [];
-    req.session.curId = 0;
-  }
-
-  if (!req.session.name) {
-    res.render('newuser', context);
-    return;
-  }
-
-  if (req.body['Add Item']) {
-    req.session.toDo.push({"name": req.body.name, "id": req.session.curId});
-    req.session.curId++;
-  }
-
-  if (req.body['Done']) {
-    req.session.toDo = req.session.toDo.filter(function(e) {
-      return e.id != req.body.id;
-    })
-  }
-
-  context.name = req.session.name;
-  context.toDoCount = req.session.toDo.length;
-  context.toDo = req.session.toDo;
-  console.log(context.toDo);
-
-  res.render('todo', context);
+  db.pool.query("INSERT INTO todo (`name`) VALUES (?)", [req.query.c], function(err, result) {
+    if (err) {
+      next(err);
+      return;
+    }
+    context.results = "Inserted name " + req.query.c + " with id " + result.insertId;
+    res.render('inserted', context);
+    console.log(result);
+  });
 });
 
-app.get('/count', function(req, res) {
+app.get('/reset-table', function(req, res, next) {
   var context = {};
-  context.count = req.session.count || 0;
-  req.session.count = context.count + 1;
-  res.render('counter', context);
+  db.pool.query("DROP TABLE IF EXISTS todo", function(err) {
+    context.results = "Table dropped";
+
+    var queryString = "CREATE TABLE todo(" +
+        "id INT PRIMARY KEY AUTO_INCREMENT," +
+        "name VARCHAR(255) NOT NULL," +
+        "done BOOLEAN," +
+        "due DATE)";
+    db.pool.query(queryString, function(err) {
+      context.results += " - Table created";
+      res.render('reset-table', context);
+    });
+  });
 });
 
 app.use(function(req, res) {
